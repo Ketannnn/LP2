@@ -1,0 +1,100 @@
+import random
+
+# Dictionary of predefined responses
+responses = {
+    "greeting": [
+        "Hello!", "Hi there!", "Hey!", "Welcome!", "Nice to see you!"
+    ],
+    "farewell": [
+        "Goodbye!", "See you later!", "Take care!", "Have a nice day!", "Bye!"
+    ],
+    "thanks": [
+        "You're welcome!", "No problem!", "My pleasure!", "Glad I could help!"
+    ],
+    "how_are_you": [
+        "I'm just a bot, but I'm doing great! How about you?",
+        "Feeling code-tastic! How can I assist you?",
+        "Doing well, thank you!"
+    ],
+    "name_query": [
+        "I'm a chatbot created to talk with you!",
+        "You can call me ChatBot!",
+        "I don't have a name yet, but I'm here to help!"
+    ],
+    "help": [
+        "Sure! Ask me anything.",
+        "I'm here to assist. What do you need help with?",
+        "Just tell me what you want, and I’ll do my best!"
+    ],
+    "joke": [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "I would tell you a joke about construction... but I'm still working on it!",
+        "Why did the computer go to therapy? It had too many bytes of emotional baggage!"
+    ],
+    "weather": [
+        "I'm not sure, but it’s always sunny in cyberspace!",
+        "I can’t see the weather, but I hope it's nice where you are!",
+        "Looks like a great day to chat with a bot!"
+    ],
+    "age_query": [
+        "I'm ageless – forever young and forever learning!",
+        "Time doesn't apply to bots, but I'm wise beyond milliseconds!",
+        "I was born the moment you ran this program!"
+    ],
+    "creator_query": [
+        "I was created by Sakshi Malusare!",
+        "My creator is brilliant – Sakshi Malusare built me!",
+        "All credit goes to Sakshi Malusare for making me!"
+    ],
+    "mood": [
+        "I'm feeling logical today.",
+        "I'm always in a good mood when we're chatting!",
+        "Bots don’t feel much, but I’d say I’m fantastic!"
+    ],
+    "default": [
+        "I'm sorry, I didn't understand that.",
+        "Could you please rephrase?",
+        "Hmm, I'm not sure what you mean.",
+        "Can you clarify that for me?"
+    ]
+}
+
+# Function to generate a response based on user input
+def generate_response(user_input):
+    user_input = user_input.lower()
+    if any(greet in user_input for greet in ["hello", "hi", "hey"]):
+        return random.choice(responses["greeting"])
+    elif any(bye in user_input for bye in ["goodbye", "bye", "see you"]):
+        return random.choice(responses["farewell"])
+    elif "thank" in user_input:
+        return random.choice(responses["thanks"])
+    elif "how are you" in user_input:
+        return random.choice(responses["how_are_you"])
+    elif "your name" in user_input or "who are you" in user_input:
+        return random.choice(responses["name_query"])
+    elif "help" in user_input:
+        return random.choice(responses["help"])
+    elif "joke" in user_input:
+        return random.choice(responses["joke"])
+    elif "weather" in user_input:
+        return random.choice(responses["weather"])
+    elif "how old" in user_input or "your age" in user_input:
+        return random.choice(responses["age_query"])
+    elif "who made you" in user_input or "your creator" in user_input:
+        return random.choice(responses["creator_query"])
+    elif "mood" in user_input or "how do you feel" in user_input:
+        return random.choice(responses["mood"])
+    else:
+        return random.choice(responses["default"])
+
+# Main interaction loop
+
+print("Type 'exit' to end the chat.\n")
+
+while True:
+    user_input = input("User: ")
+    if user_input.lower() == "exit":
+        print("Bot: Goodbye!")
+        break
+    bot_response = generate_response(user_input)
+    print("Bot:", bot_response)
